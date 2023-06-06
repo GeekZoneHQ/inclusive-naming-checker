@@ -1,0 +1,15 @@
+jobs:
+  test:
+    name: Inclusive Naming Checker
+    runs-on: ubuntu-latest
+
+    env:
+      GH_ACCESS_TOKEN_INC:
+      GH_INC_REPO:
+
+    steps:
+
+  
+
+
+  #Need: Access to pushed files, feed pushed files sequentially or in parallel to different instances of python file, INC.py to run, ubuntu env, setup python in container, give results of INC.py to github test, names for steps

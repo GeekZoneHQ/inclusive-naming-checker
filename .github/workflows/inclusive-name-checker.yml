@@ -1,0 +1,21 @@
+name: inclusive-naming-checker
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_ACCESS_TOKEN_WEB: 
+      GH_MAIN_REPO: ${{ github.workspace }}
+
+    steps:
+
+      name: checkout repo
+      uses: actions/checkout@v3
+
+      name: Run inclusive-naming-checker action
+      uses: GeekZoneHQ/inclusive-naming-checker@main
+        with: GH_MAIN_REPO
