@@ -1,15 +1,21 @@
-jobs:
-  test:
-    name: Inclusive Naming Checker
-    runs-on: ubuntu-latest
+name: 'inclusive-naming-checker'
+description: 'Checks new/updated files for non-inclusive language in accordance with the Inclusive Naming Initiative'
+  who-to-greet:  # id of input
+    description: 'What branch are we looking at?'
+    required: true
+    default: ${{ github.base_ref }}
+outputs:
+  report: #id
+    description:
+      "A markdown file containing details of the test"
+  result: #id
+    description:
+      "Whether the test passed or failed"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  volumes: ${{ github.workspace }}:/root/repo/
+  args: 
+    - ${{ github.base_ref }}
+    - bash python3 inclusive-naming-checker.py
 
-    env:
-      GH_ACCESS_TOKEN_INC:
-      GH_INC_REPO:
-
-    steps:
-
-  
-
-
-  #Need: Access to pushed files, feed pushed files sequentially or in parallel to different instances of python file, INC.py to run, ubuntu env, setup python in container, give results of INC.py to github test, names for steps
